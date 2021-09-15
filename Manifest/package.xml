@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+
+    <types>
+        <members>*</members>
+        <name>ApexComponent</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>ApexTestSuite</name>
+    </types>
+
+    <types>
+        <members>*</members>
+        <name>AuraDefinitionBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>LightningComponentBundle</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>StaticResource</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>Group</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>GlobalValueSet</name>
+    </types>
+    <types>
+        <members>Account</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Contact</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Case</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Order</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>Product2</members>
+        <name>CustomObject</name>
+    </types>
+    
+    <version>52.0</version>
+</Package>
