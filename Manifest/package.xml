@@ -55,6 +55,22 @@
         <members>Product2</members>
         <name>CustomObject</name>
     </types>
+    <types>
+        <members>*</members>
+        <name>ApexClass</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>ApexPage</name>
+    </types>
+       <types>
+        <members>*</members>
+        <name>ApexTrigger</name>
+    </types>
+       <types>
+        <members>*</members>
+        <name>Flow</name>
+    </types>
     
     <version>52.0</version>
 </Package>
