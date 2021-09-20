@@ -5,8 +5,10 @@
       "default": true
     }
   ],
-  "name": "Project 1",
+  "name": "ProjectTwo- MaDonaolds",
   "namespace": "",
-  "sfdcLoginUrl": "https://brave-otter-kyauqm-dev-ed.my.salesforce.com/",
+  "sfdcLoginUrl": "https://curious-hawk-nfv8jv-dev-ed.my.salesforce.com/",
   "sourceApiVersion": "52.0"
 }
+
+
