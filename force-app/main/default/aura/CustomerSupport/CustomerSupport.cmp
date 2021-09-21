@@ -1,3 +1,11 @@
 <aura:component>
-    <p>Test Text</p>
+    <lightning:recordEditForm aura:id="recordEditForm" objectAPIName="Case">
+        <lightning:messages />
+
+        <lightning:inputField fieldName="Description"/>
+        <lightning:inputField fieldName="Subject"/>
+        <lightning:inputField fieldName="Restaurant__c"/>
+        <lightning:button class="slds-var-m-top_small" type="submit" label="Create new" />
+    </lightning:recordEditForm>
+    <p> test text </p>
 </aura:component>	
