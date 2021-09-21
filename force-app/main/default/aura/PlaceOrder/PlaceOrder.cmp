@@ -1,0 +1,10 @@
+<aura:component>
+    <lightning:recordEditForm aura:id="placeOrderForm" objectAPIName="OrderItem">
+        <lightning:messages />
+
+        <lightning:inputField fieldName="Product2id"/>
+        <lightning:inputField fieldName="Quantity"/>
+        <lightning:button class="slds-var-m-top_small" type="submit" label="Create new" />
+    </lightning:recordEditForm>
+    <p> Place Order </p>
+</aura:component>
