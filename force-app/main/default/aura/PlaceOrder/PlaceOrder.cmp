@@ -13,5 +13,6 @@
     <br/><br/><br/>
     <p><lightning:formattedText value="{!'Cost: $' + v.productPrice}" /></p>
     <br/><br/><br/>
-    <lightning:button class="slds-var-m-top_small" type="submit" label="Add item to Order" />
+    <lightning:button variant="brand" label="Add Item to Order" title="AddItem"/>
+
 </aura:component>
