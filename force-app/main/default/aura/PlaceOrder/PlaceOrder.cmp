@@ -1,8 +1,9 @@
 <aura:component controller="ControllerPlaceOrder">
 
     <aura:attribute name="productNames" type="List"/>
+    <aura:attribute name="productPrice" type="Decimal"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
-    <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" required="true">
+    <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" onchange="{!c.onProdSelect}" required="true">
         <aura:iteration items="{!v.productNames}" var="prodName">
                 <option text="{!prodName}"></option>
             </aura:iteration>
