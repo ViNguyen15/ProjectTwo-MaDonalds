@@ -1,6 +1,7 @@
 <aura:component controller="ControllerPlaceOrder">
 
-    <lightning:select name="selectProduct" label="Select a Product" required="true">
+    <aura:attribute name="productNames" type="List"/>
+    <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" required="true">
         <aura:iteration items="{!v.productNames}" var="prodName">
                 <option text="{!prodName}"></option>
             </aura:iteration>
