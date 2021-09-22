@@ -11,7 +11,7 @@
         let prodPrice = cmp.get("c.getProductPrice");
         prodPrice.setParams({productName : prodName});
         prodPrice.setCallback(this, function(resp){
-            component.set("v.productPrice", resp.getReturnValue());
+            cmp.set("v.productPrice", resp.getReturnValue());
         })
         $A.enqueueAction(prodPrice);
     }
