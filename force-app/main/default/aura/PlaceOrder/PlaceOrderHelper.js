@@ -7,9 +7,9 @@
         $A.enqueueAction(productNames);
     },
 
-    onProdSelect : function(cmp, prodName){
+    onProdSelect : function(cmp, prodName, prodQuantity){
         let prodPrice = cmp.get("c.getProductPrice");
-        prodPrice.setParams({productName : prodName});
+        prodPrice.setParams({productName : prodName, quantity: prodQuantity});
         prodPrice.setCallback(this, function(resp){
             cmp.set("v.productPrice", resp.getReturnValue());
         })

@@ -16,11 +16,11 @@ public class ControllerPlaceOrder {
     }
     //
     @AuraEnabled
-    public static decimal getProductPrice(String productName){
+    public static decimal getProductPrice(String productName, Integer quantity){
         List<Product2> products = [SELECT name, ProductCost__c FROM Product2];
         for (product2 a : products){
             if (a.name == productName){
-                return a.ProductCost__c;
+                return a.ProductCost__c * quantity;
             }
         }
         return 0;
