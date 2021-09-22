@@ -10,7 +10,7 @@
             </aura:iteration>
     </lightning:select>
     <br/><br/><br/>
-    <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" required="true" onchange="{!c.onProdSelect}"/>
+    <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" min = "0" required="true" onchange="{!c.onProdSelect}"/>
     <br/><br/><br/>
     <p><lightning:formattedText value="{!'Cost: $' + v.productPrice}" /></p>
     <br/><br/><br/>

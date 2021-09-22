@@ -17,7 +17,7 @@
         $A.enqueueAction(prodPrice);
         //This part sets a boolean telling if a product has been selected or the selected field is the default blank option
         let isValue = cmp.get("c.isSelected");
-        isValue.setParams({productName : prodName});
+        isValue.setParams({productName : prodName, quantity: prodQuantity});
         isValue.setCallback(this, function(resp){
             cmp.set("v.itemSelected", resp.getReturnValue());
         })

@@ -18,6 +18,9 @@ public class ControllerPlaceOrder {
     //
     @AuraEnabled
     public static decimal getProductPrice(String productName, Integer quantity){
+        if (quantity <= 0){
+            return 0;
+        }
         List<Product2> products = [SELECT name, ProductCost__c FROM Product2];
         for (product2 a : products){
             if (a.name == productName){
@@ -28,7 +31,10 @@ public class ControllerPlaceOrder {
     }
 
     @AuraEnabled
-    public static Boolean isSelected(String productName){
+    public static Boolean isSelected(String productName, Integer quantity){
+        if (quantity <= 0){
+            return false;
+        }
         return !(productName == 'Select a Product');
     }
 }
