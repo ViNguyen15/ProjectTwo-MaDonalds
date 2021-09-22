@@ -26,4 +26,9 @@ public class ControllerPlaceOrder {
         }
         return 0;
     }
+
+    @AuraEnabled
+    public static Boolean isSelected(String productName){
+        return !(productName == 'Select a Product');
+    }
 }
