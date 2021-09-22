@@ -9,6 +9,7 @@ public class ControllerPlaceOrder {
         for (product2 a : products){
             productNames.add(a.name);
         }
+        System.debug(productNames);
         return productNames;
     }
 }
