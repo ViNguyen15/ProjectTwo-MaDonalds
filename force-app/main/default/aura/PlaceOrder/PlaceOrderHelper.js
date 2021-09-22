@@ -24,13 +24,19 @@
         $A.enqueueAction(isValue);
     },
 
-    createOrder : function(cmp){
+    createOrder : function(cmp, userID){
         let action1 = cmp.get("c.createOrder");
-        action1.setParams({UserID : $A.get("$SObjectType.CurrentUser.Id")});
+        action1.setParams({UserID : userID});
         action1.setCallback(this, function(resp){
             cmp.set("v.orderID", resp.getReturnValue());
         })
         $A.enqueueAction(action1);
+    },
+
+    addItem : function(cmp, prodName, prodQuantity, orderID){
+        let theAction = cmp.get("c.addItem");
+        theAction.setParams({ordID : orderID, productName : prodName, quant : prodQuantity});
+        $A.enqueueAction(theAction);
     }
 
 

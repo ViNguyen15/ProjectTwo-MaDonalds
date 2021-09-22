@@ -51,4 +51,17 @@ public class ControllerPlaceOrder {
         }
         return !(productName == 'Select a Product');
     }
+    
+    // Adds an OrderItem to the Order associated with the user
+    @AuraEnabled
+    public static void addItem(String ordID, String productName, Integer quant){
+        //This list should always contain exactly one product, corresponding to the name in the function call
+        List<Product2> products = [SELECT name, isActive FROM Product2 WHERE isActive = True AND name =: productName];
+        if (products.size() == 0){
+            System.debug('the add item function failed because the productName was invalid.');
+            return;
+        }
+        OrderItem toAdd = new OrderItem(Product2id = products.get(0).id, OrderId = ordID, Quantity = quant);
+        insert toAdd;
+    }
 }
