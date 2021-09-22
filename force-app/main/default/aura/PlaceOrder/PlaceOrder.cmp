@@ -1,5 +1,6 @@
 <aura:component controller="ControllerPlaceOrder">
 
+    <aura:attribute name="orderID" type="String"/>
     <aura:attribute name="productNames" type="List"/>
     <aura:attribute name="productPrice" type="Decimal"/>
     <aura:attribute name="itemSelected" type="Boolean"/>

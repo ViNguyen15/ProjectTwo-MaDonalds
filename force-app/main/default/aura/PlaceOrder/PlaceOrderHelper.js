@@ -22,6 +22,15 @@
             cmp.set("v.itemSelected", resp.getReturnValue());
         })
         $A.enqueueAction(isValue);
+    },
+
+    createOrder : function(cmp){
+        let action1 = cmp.get("c.createOrder");
+        action1.setParams({UserID : $A.get("$SObjectType.CurrentUser.Id")});
+        action1.setCallback(this, function(resp){
+            cmp.set("v.orderID", resp.getReturnValue());
+        })
+        $A.enqueueAction(action1);
     }
 
 

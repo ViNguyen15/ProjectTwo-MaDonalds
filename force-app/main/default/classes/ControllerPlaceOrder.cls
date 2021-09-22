@@ -3,6 +3,20 @@ public class ControllerPlaceOrder {
         
     }
 
+    //Used to create the order at initialization
+    //Will use first existing incomplete order instead user owns if they already own one
+    @AuraEnabled
+    public static string createOrder(String userID){
+        List<Order> usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: userID AND status = 'Draft'];
+        if (usersOrders.size() > 0){
+            return usersOrders.get(0).id;
+        }
+        Order theOrder = new Order(OwnerId = userID, Name = userID + '\'s Order', status = 'Draft');
+        insert theOrder;
+        usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: UserID AND status = 'Draft'];
+        return usersOrders.get(0).id;
+    }
+
     //Used to get the list of product names
     @AuraEnabled
     public static List<String> getProductNameList(){
@@ -15,7 +29,7 @@ public class ControllerPlaceOrder {
         System.debug(productNames);
         return productNames;
     }
-    //
+    //Used to determine the product price for display
     @AuraEnabled
     public static decimal getProductPrice(String productName, Integer quantity){
         if (quantity <= 0){
@@ -29,7 +43,7 @@ public class ControllerPlaceOrder {
         }
         return 0;
     }
-
+    // used to check whether or not the add item to order button should be displayed (depends on if the selections are valid)
     @AuraEnabled
     public static Boolean isSelected(String productName, Integer quantity){
         if (quantity <= 0){
