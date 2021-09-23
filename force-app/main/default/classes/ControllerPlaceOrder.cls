@@ -39,13 +39,9 @@ public class ControllerPlaceOrder {
         if (quantity <= 0){
             return 0;
         }
-        List<Product2> products = [SELECT name, ProductCost__c FROM Product2];
-        for (product2 a : products){
-            if (a.name == productName){
-                return a.ProductCost__c * quantity;
-            }
-        }
-        return 0;
+        List<Product2> products = [SELECT name, ProductCost__c FROM Product2 WHERE name =: productName];
+        List<PricebookEntry> PBentries = [SELECT id, product2id, unitprice FROM PricebookEntry WHERE product2id =: products.get(0).id];
+        return (PBentries.get(0).unitprice * quantity);
     }
     // used to check whether or not the add item to order button should be displayed (depends on if the selections are valid)
     @AuraEnabled
