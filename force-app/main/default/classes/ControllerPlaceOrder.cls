@@ -6,12 +6,14 @@ public class ControllerPlaceOrder {
     //Used to create the order at initialization
     //Will use first existing incomplete order instead user owns if they already own one
     @AuraEnabled
-    public static string createOrder(String userID){
+    public static string createOrder(){
+        String userID = UserInfo.getUserId();
         List<Order> usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: userID AND status = 'Draft'];
         if (usersOrders.size() > 0){
             return usersOrders.get(0).id;
         }
-        Order theOrder = new Order(OwnerId = userID, Name = userID + '\'s Order', status = 'Draft');
+        Order theOrder = new Order(OwnerId = userID, Name = userID + '\'s Order', status = 'Draft', AccountId = getAccount(),
+                                   EffectiveDate = system.today(), recordTypeID = Schema.SObjectType.Order.GetRecordTypeInfosByDeveloperName().get('Customer_Order').getRecordTypeID());
         insert theOrder;
         usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: UserID AND status = 'Draft'];
         return usersOrders.get(0).id;
@@ -54,7 +56,7 @@ public class ControllerPlaceOrder {
     
     // Adds an OrderItem to the Order associated with the user
     @AuraEnabled
-    public static void addItem(String ordID, String productName, Integer quant){
+    public static void addItem3(String ordID, String productName, Integer quant){
         //This list should always contain exactly one product, corresponding to the name in the function call
         List<Product2> products = [SELECT name, isActive FROM Product2 WHERE isActive = True AND name =: productName];
         if (products.size() == 0){
@@ -63,5 +65,18 @@ public class ControllerPlaceOrder {
         }
         OrderItem toAdd = new OrderItem(Product2id = products.get(0).id, OrderId = ordID, Quantity = quant);
         insert toAdd;
+    }
+
+    // Gets the current account that is accessing the component
+    @AuraEnabled
+    public static String getAccount(){
+        List<User> users = [SELECT id, contactID FROM User WHERE id =: UserInfo.getUserId()];
+        //ContactID for current user is null when using preview through dev console, should ALWAYS be not null when using experience site
+        if (users.get(0).contactID == null){
+            System.debug('You should not see this on the experience site, only during previews in dev console');
+            return '0015f000005jh63AAA';
+        }
+        List<Contact> contacts = [SELECT id, accountID FROM contact WHERE id =: users.get(0).contactID];
+        return contacts.get(0).accountID;
     }
 }

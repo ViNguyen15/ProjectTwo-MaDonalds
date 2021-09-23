@@ -16,7 +16,7 @@
     <p><lightning:formattedText value="{!'Cost: $' + v.productPrice}" /></p>
     <br/><br/><br/>
     <aura:if isTrue="{!v.itemSelected}">
-        <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem}"/>
+        <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
     </aura:if>
 
 </aura:component>

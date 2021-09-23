@@ -3,7 +3,7 @@
     doInit : function(component, event, helper) 
     {
         helper.getProductNames(component, event);
-        helper.createOrder(component, $A.get("$SObjectType.CurrentUser.Id"));
+        helper.createOrder(component);
     },
 
     
@@ -11,8 +11,8 @@
         helper.onProdSelect(cmp, cmp.find('selectProductID').get('v.value'), cmp.find('quantityID').get('v.value'));
     },
 
-    addItem: function(cmp, evt, helper){
-        helper.addItem(cmp, cmp.find('selectProductID').get('v.value'), cmp.find('quantityID').get('v.value'), cmp.get('v.orderID'));
+    addItem1: function(cmp, evt, helper){
+        helper.addItem2(cmp, cmp.find('selectProductID').get('v.value'), cmp.find('quantityID').get('v.value'), cmp.get('v.orderID'));
     }
 
 })
