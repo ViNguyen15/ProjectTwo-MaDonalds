@@ -39,7 +39,7 @@ public class ControllerPlaceOrder {
         if (quantity <= 0){
             return 0;
         }
-        List<Product2> products = [SELECT name, ProductCost__c FROM Product2 WHERE name =: productName];
+        List<Product2> products = [SELECT name, id FROM Product2 WHERE name =: productName];
         List<PricebookEntry> PBentries = [SELECT id, product2id, unitprice FROM PricebookEntry WHERE product2id =: products.get(0).id];
         return (PBentries.get(0).unitprice * quantity);
     }
@@ -78,4 +78,40 @@ public class ControllerPlaceOrder {
         List<Contact> contacts = [SELECT id, accountID FROM contact WHERE id =: users.get(0).contactID];
         return contacts.get(0).accountID;
     }
+    //This is necessary to get wrapped order items into a list for display on the component
+    @AuraEnabled
+    public static List<WrappedOrderItem> updateOrderList3(String ordID){
+        List<OrderItem> orderItems = [SELECT id, product2id, Quantity, listPrice FROM OrderItem WHERE OrderID =: ordID];
+        list<WrappedOrderItem> toReturn = new list<WrappedOrderItem>();
+        List<Product2> products = [SELECT id, name FROM Product2];
+        for (orderItem a : orderItems){
+            for (product2 b : products){
+                if (b.id == a.product2id){
+                    toReturn.add(new WrappedOrderItem(a.totalPrice, a.Quantity, b.name));
+                }
+            }
+        }
+        return toReturn;
+    }
+    //We wrap order items in this wrapper class so that they have a product name associated with them
+    //This is the easiest way to display them on the component that I could think of
+    //If this is needlessly complicated, I apologize
+    public class WrappedOrderItem{
+        @AuraEnabled
+        public decimal totalAmount{get; set;}
+        
+        @AuraEnabled
+        public decimal quantity{get; set;}
+        
+        @AuraEnabled
+        public string productName{get; set;}
+        
+        WrappedOrderItem(decimal totam, decimal quant, String name)
+        {
+            totalAmount = totam;
+            quantity = quant;
+            productName = name;
+        }
+    }
+
 }

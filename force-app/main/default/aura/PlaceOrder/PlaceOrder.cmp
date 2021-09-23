@@ -4,6 +4,7 @@
     <aura:attribute name="productNames" type="List"/>
     <aura:attribute name="productPrice" type="Decimal"/>
     <aura:attribute name="itemSelected" type="Boolean"/>
+    <aura:attribute name="OrderList" type = "ControllerPlaceOrder.WrappedOrderItem[]"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" onchange="{!c.onProdSelect}" required="true">
         <aura:iteration items="{!v.productNames}" var="prodName">
@@ -20,6 +21,6 @@
     </aura:if>
     <br/><br/><br/>
     <aura:if isTrue="{!v.orderID}">
-        
+
     </aura:if>
 </aura:component>

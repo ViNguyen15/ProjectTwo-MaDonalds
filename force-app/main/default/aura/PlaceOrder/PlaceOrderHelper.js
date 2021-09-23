@@ -36,6 +36,16 @@
         let theAction = cmp.get("c.addItem3");
         theAction.setParams({ordID : orderID, productName : prodName, quant : prodQuantity});
         $A.enqueueAction(theAction);
+    },
+
+    updateOrderList2 : function(cmp, orderID){
+        let theAction = cmp.get("c.updateOrderList3");
+        theAction.setParams({ordID : orderID});
+        theAction.setCallback(this, function(resp){
+            cmp.set("v.OrderList", resp.getReturnValue());
+        })
+        $A.enqueueAction(theAction);
+
     }
 
 
