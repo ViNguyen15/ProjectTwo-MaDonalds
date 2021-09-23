@@ -22,9 +22,7 @@
     <br/><br/><br/>
     <aura:if isTrue="{!v.orderID}">
         <aura:iteration items = "{!v.OrderList}" var="item">
-            <p>  {!item.TotalAmount}  </p><br/>
-            <p>  {!item.Quantity}  </p><br/>
-            <p>  {!item.productName}  </p><br/>
+            <p>  {!item.productName}, {!item.TotalAmount}, {!item.Quantity}  </p><br/>
         </aura:iteration>
         <p>{!v.orderID}</p>
     </aura:if>

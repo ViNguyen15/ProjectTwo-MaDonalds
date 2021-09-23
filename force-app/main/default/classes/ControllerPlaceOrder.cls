@@ -81,7 +81,7 @@ public class ControllerPlaceOrder {
     //This is necessary to get wrapped order items into a list for display on the component
     @AuraEnabled
     public static List<WrappedOrderItem> updateOrderList3(String ordID){
-        List<OrderItem> orderItems = [SELECT id, product2id, Quantity, listPrice FROM OrderItem WHERE OrderID =: ordID];
+        List<OrderItem> orderItems = [SELECT id, product2id, Quantity, listPrice, totalPrice FROM OrderItem WHERE OrderID =: ordID];
         list<WrappedOrderItem> toReturn = new list<WrappedOrderItem>();
         List<Product2> products = [SELECT id, name FROM Product2];
         for (orderItem a : orderItems){
