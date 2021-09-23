@@ -6,7 +6,7 @@ public class ControllerPlaceOrder {
     //Used to create the order at initialization
     //Will use first existing incomplete order instead user owns if they already own one
     @AuraEnabled
-    public static string createOrder(){
+    public static ID createOrder(){
         String userID = UserInfo.getUserId();
         List<Order> usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: userID AND status = 'Draft'];
         if (usersOrders.size() > 0){

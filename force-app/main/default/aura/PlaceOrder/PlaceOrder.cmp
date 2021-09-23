@@ -1,6 +1,6 @@
 <aura:component controller="ControllerPlaceOrder">
 
-    <aura:attribute name="orderID" type="String"/>
+    <aura:attribute name="orderID" type="ID"/>
     <aura:attribute name="productNames" type="List"/>
     <aura:attribute name="productPrice" type="Decimal"/>
     <aura:attribute name="itemSelected" type="Boolean"/>
@@ -18,5 +18,12 @@
     <aura:if isTrue="{!v.itemSelected}">
         <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
     </aura:if>
-
+    <br/><br/><br/>
+    <aura:if isTrue="{!v.orderID}">
+        <lightning:recordForm
+            recordID="{!v.orderID}"
+            objectAPIName="Order"
+            layoutType="Full"
+            mode="readonly" />
+    </aura:if>
 </aura:component>
