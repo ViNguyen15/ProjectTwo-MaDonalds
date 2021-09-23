@@ -12,8 +12,10 @@ public class ControllerPlaceOrder {
         if (usersOrders.size() > 0){
             return usersOrders.get(0).id;
         }
+        list<PriceBook2> pricebooks = [SELECT id, isStandard FROM Pricebook2 WHERE isStandard = true];
         Order theOrder = new Order(OwnerId = userID, Name = userID + '\'s Order', status = 'Draft', AccountId = getAccount(),
-                                   EffectiveDate = system.today(), recordTypeID = Schema.SObjectType.Order.GetRecordTypeInfosByDeveloperName().get('Customer_Order').getRecordTypeID());
+                                   EffectiveDate = system.today(), recordTypeID = Schema.SObjectType.Order.GetRecordTypeInfosByDeveloperName().get('Customer_Order').getRecordTypeID(),
+                                   Pricebook2ID = pricebooks.get(0).id);
         insert theOrder;
         usersOrders = [SELECT id, status, OwnerID FROM ORDER WHERE OwnerId =: UserID AND status = 'Draft'];
         return usersOrders.get(0).id;
@@ -58,12 +60,13 @@ public class ControllerPlaceOrder {
     @AuraEnabled
     public static void addItem3(String ordID, String productName, Integer quant){
         //This list should always contain exactly one product, corresponding to the name in the function call
-        List<Product2> products = [SELECT name, isActive FROM Product2 WHERE isActive = True AND name =: productName];
+        List<Product2> products = [SELECT name, id, isActive FROM Product2 WHERE isActive = True AND name =: productName];
         if (products.size() == 0){
             System.debug('the add item function failed because the productName was invalid.');
             return;
         }
-        OrderItem toAdd = new OrderItem(Product2id = products.get(0).id, OrderId = ordID, Quantity = quant);
+        List<PricebookEntry> PBentries = [SELECT id, product2id, unitprice FROM PricebookEntry WHERE product2id =: products.get(0).id];
+        OrderItem toAdd = new OrderItem(Product2id = products.get(0).id, OrderId = ordID, Quantity = quant, PriceBookEntryId = PBentries.get(0).id, UnitPrice = PBentries.get(0).unitprice);
         insert toAdd;
     }
 
