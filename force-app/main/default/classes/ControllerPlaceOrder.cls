@@ -36,7 +36,7 @@ public class ControllerPlaceOrder {
     //Used to determine the product price for display
     @AuraEnabled
     public static decimal getProductPrice(String productName, Integer quantity){
-        if (quantity <= 0){
+        if (quantity <= 0 || productName == 'Select a Product'){
             return 0;
         }
         List<Product2> products = [SELECT name, id FROM Product2 WHERE name =: productName];
