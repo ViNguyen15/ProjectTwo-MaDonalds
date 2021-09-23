@@ -20,10 +20,6 @@
     </aura:if>
     <br/><br/><br/>
     <aura:if isTrue="{!v.orderID}">
-        <lightning:recordForm
-            recordID="{!v.orderID}"
-            objectAPIName="Order"
-            layoutType="Full"
-            mode="readonly" />
+        
     </aura:if>
 </aura:component>
