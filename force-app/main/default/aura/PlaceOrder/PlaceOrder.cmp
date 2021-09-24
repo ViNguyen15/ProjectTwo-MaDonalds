@@ -12,11 +12,11 @@
                 <option text="{!prodName}"></option>
             </aura:iteration>
     </lightning:select>
-    <br/><br/><br/>
+    <br/><br/>
     <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" min = "0" required="true" onchange="{!c.onProdSelect}"/>
-    <br/><br/><br/>
+    <br/><br/>
     <p><lightning:formattedText value="{!'Cost: $' + v.productPrice}" /></p>
-    <br/><br/><br/>
+    <br/><br/>
     <aura:if isTrue="{!v.itemSelected}">
         <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
     </aura:if>
@@ -27,6 +27,7 @@
         </aura:iteration>
         <p>Total cost for order: ${!v.orderPrice}</p>
     </aura:if>
+    <br/>
     <aura:if isTrue="{!v.orderPrice}">
         <lightning:button variant="brand" label="Submit Order" title="SubmitOrder" onclick="{!c.submitOrder1}"/>
     </aura:if>
