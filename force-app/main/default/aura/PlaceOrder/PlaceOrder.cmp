@@ -21,7 +21,7 @@
         <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
     </aura:if>
     <br/><br/><br/>
-    <aura:if isTrue="{!v.orderID}">
+    <aura:if isTrue="{!v.orderPrice}">
         <aura:iteration items = "{!v.OrderList}" var="item">
             <p>  ${!item.totalAmount}: [{!item.quantity}]ㅤ{!item.productName} </p><br/>
         </aura:iteration>

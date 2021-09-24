@@ -62,9 +62,9 @@
             cmp.set("v.orderID", resp.getReturnValue());
         })
         $A.enqueueAction(theAction);
-
-        
-
+        //The alert to let the user know their order has been submitted
+        alert("Your order has been submitted.");
+        cmp.set("v.orderPrice", "");
     }
 
 
