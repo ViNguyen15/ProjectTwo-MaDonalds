@@ -52,6 +52,19 @@
         })
         $A.enqueueAction(orderPriceSetter);
 
+    },
+
+    submitOrder2 : function(cmp, orderID){
+        //This part of the code will submit the order, updates orderID to fresh order
+        let theAction = cmp.get("c.submitOrder3");
+        theAction.setParams({ordID : orderID});
+        theAction.setCallback(this, function(resp){
+            cmp.set("v.orderID", resp.getReturnValue());
+        })
+        $A.enqueueAction(theAction);
+
+        
+
     }
 
 

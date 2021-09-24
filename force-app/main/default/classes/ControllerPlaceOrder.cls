@@ -104,6 +104,15 @@ public class ControllerPlaceOrder {
         return orders.get(0).totalAmount;
     }
 
+    //For submitting a finished order
+    @AuraEnabled
+    public static String submitOrder3(String ordID){
+        List<order> orders = [SELECT id, status FROM Order WHERE id =: ordID];
+        orders.get(0).status = 'Activated';
+        update orders;
+        return createOrder();
+    }
+
     //We wrap order items in this wrapper class so that they have a product name associated with them
     //This is the easiest way to display them on the component that I could think of
     //If this is needlessly complicated, I apologize

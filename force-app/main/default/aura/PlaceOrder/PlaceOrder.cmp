@@ -27,4 +27,7 @@
         </aura:iteration>
         <p>Total cost for order: ${!v.orderPrice}</p>
     </aura:if>
+    <aura:if isTrue="{!v.orderPrice}">
+        <lightning:button variant="brand" label="Submit Order" title="SubmitOrder" onclick="{!c.submitOrder1}"/>
+    </aura:if>
 </aura:component>
