@@ -31,6 +31,39 @@ public class TestControllerPlaceOrder {
         System.AssertEquals(ControllerPlaceOrder.getProductPrice('Select a Product', 1), 0);
         System.AssertEquals(ControllerPlaceOrder.getProductPrice('borgar', -5), 0);
         System.AssertEquals(ControllerPlaceOrder.getProductPrice('borgar', 3), 15);
-        
+        //Ensures "isSelected" hides the button on the page
+        //If and only if the currently selected order item is invalid,
+        //i.e negative quantity, 'select a product' should fail
+        System.assert(ControllerPlaceOrder.isSelected('borgar', 2));
+        System.assert(!ControllerPlaceOrder.isSelected('borgar', 0));
+        System.assert(!ControllerPlaceOrder.isSelected('borgar', -5));
+        System.assert(!ControllerPlaceOrder.isSelected('Select a Product', 2));
+        //Tests if the item is added properly by additem3
+        ControllerPlaceOrder.addItem3(orders.get(0).id, 'borgar', 3);
+        List<orderItem> orderItems = [SELECT id, totalPrice FROM orderItem];
+        System.assertEquals(orderItems.get(0).totalPrice, 15);
+        System.assertEquals(orderItems.size(), 1);
+        //Tests to ensure that the this order item, which has an invalid name, does not crash the program
+        //And is not added to orderItems
+        ControllerPlaceOrder.addItem3(orders.get(0).id, 'shake', 2);
+        orderItems = [SELECT id, totalPrice FROM orderItem];
+        System.assertEquals(orderItems.size(), 1)
+        //This part tests to ensure updateOrderList3 wraps the orderitem correctly
+        List<ControllerPlaceOrder.WrappedOrderItem> wrapped = ControllerPlaceOrder.updateOrderList3(orders.get(0).id);
+        System.assertEquals(wrapped.size(), 1); 
+        System.assertEquals(wrapped.get(0).quantity, 3); 
+        System.assertEquals(wrapped.get(0).totalAmount, 15); 
+        System.assertEquals(wrapped.get(0).productName, 'borgar');
+        //This part ensures getOrderPrice returns the proper value for order price
+        System.assertEquals(ControllerPlaceOrder.getOrderPrice(orders.get(0).id), 15);
+         //This part ensures that orders are submitted properly
+        String newOrdId = ControllerPlaceOrder.submitOrder3();
+        System.assertNotEquals(newOrdId, orders.get(0).id);
+        System.assertEquals(ControllerPlaceOrder.getOrderPrice(newOrdID), 0);
+        orders = [SELECT id, totalAmount, ownerID FROM order WHERE userID=: UserInfo.getUserId()];
+        System.assertEquals(orders.size(), 2);
+        orders = [SELECT id, totalAmount, ownerID, status FROM order WHERE userID=: UserInfo.getUserId() AND status = 'Activated'];
+        System.assertEquals(orders.get(0).totalAmount, 15);
+        System.assertEquals(orders.size(), 1);
     }
 }
