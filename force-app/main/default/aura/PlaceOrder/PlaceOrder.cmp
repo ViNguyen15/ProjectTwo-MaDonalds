@@ -22,6 +22,7 @@
     </aura:if>
     <br/><br/><br/>
     <aura:if isTrue="{!v.orderPrice}">
+        <p>Current Order:</p><br/>
         <aura:iteration items = "{!v.OrderList}" var="item">
             <p>  ${!item.totalAmount}: [{!item.quantity}]ㅤ{!item.productName} </p><br/>
         </aura:iteration>
