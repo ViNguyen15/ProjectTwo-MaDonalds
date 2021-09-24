@@ -4,6 +4,7 @@
     <aura:attribute name="productNames" type="List"/>
     <aura:attribute name="productPrice" type="Decimal"/>
     <aura:attribute name="itemSelected" type="Boolean"/>
+    <aura:attribute name="orderPrice" type="Decimal"/>
     <aura:attribute name="OrderList" type = "ControllerPlaceOrder.WrappedOrderItem[]"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
     <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" onchange="{!c.onProdSelect}" required="true">
@@ -24,6 +25,6 @@
         <aura:iteration items = "{!v.OrderList}" var="item">
             <p>  ${!item.totalAmount}: [{!item.quantity}]ㅤ{!item.productName} </p><br/>
         </aura:iteration>
-        <p>{!v.orderID}</p>
+        <p>Total cost for order: ${!v.orderPrice}</p>
     </aura:if>
 </aura:component>

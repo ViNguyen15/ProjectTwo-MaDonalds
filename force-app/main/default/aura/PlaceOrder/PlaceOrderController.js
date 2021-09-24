@@ -4,7 +4,7 @@
     {
         helper.getProductNames(component, event);
         helper.createOrder(component);
-        helper.updateOrderList2(component, component.get('v.orderID'));
+        setTimeout(() => {helper.updateOrderList2(component, component.get('v.orderID'));}, 1000);
     },
 
     

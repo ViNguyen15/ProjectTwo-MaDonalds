@@ -45,6 +45,12 @@
             cmp.set("v.OrderList", resp.getReturnValue());
         })
         $A.enqueueAction(theAction);
+        let orderPriceSetter = cmp.get("c.getOrderPrice");
+        orderPriceSetter.setParams({ordID : orderID});
+        orderPriceSetter.setCallback(this, function(resp){
+            cmp.set("v.orderPrice", resp.getReturnValue());
+        })
+        $A.enqueueAction(orderPriceSetter);
 
     }
 

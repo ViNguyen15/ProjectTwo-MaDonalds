@@ -93,6 +93,17 @@ public class ControllerPlaceOrder {
         }
         return toReturn;
     }
+
+    // simple function for getting order price
+    @AuraEnabled
+    public static decimal getOrderPrice(String ordID){
+        List<Order> orders = [SELECT id, totalAmount FROM Order WHERE id =: ordID];
+        if (orders.size() == 0){
+            return 0;
+        }
+        return orders.get(0).totalAmount;
+    }
+
     //We wrap order items in this wrapper class so that they have a product name associated with them
     //This is the easiest way to display them on the component that I could think of
     //If this is needlessly complicated, I apologize
