@@ -30,7 +30,9 @@
         <aura:iteration items = "{!v.OrderList}" var="item">
             <div style="height: 22px">  ${!item.totalAmount}: [{!item.quantity}]ㅤ{!item.productName} </div>
         </aura:iteration>
-        <p>Total cost for order: ${!v.orderPrice}</p>
+        <div style="height: 30px">
+            <p>Total cost for order: ${!v.orderPrice}</p>
+        </div>
     </aura:if>
     <aura:if isTrue="{!v.orderPrice}">
         <div style="height: 30px">
