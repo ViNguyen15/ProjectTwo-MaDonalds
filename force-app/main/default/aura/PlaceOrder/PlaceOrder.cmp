@@ -18,7 +18,7 @@
         <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" min = "0" required="true" onchange="{!c.onProdSelect}"/>
     </div>
     <div style="height: 30px">
-        <lightning:formattedText value="{!'Cost: $' + v.productPrice}" />
+        Cost: <lightning:formattedNumber value="{!v.productPrice}" style="currency" currencyCode="USD"/>
     </div>
     <aura:if isTrue="{!v.itemSelected}">
         <div style="height: 30px">
@@ -28,10 +28,10 @@
     <aura:if isTrue="{!v.orderPrice}">
         <div style="height: 30px">Current Order:</div>
         <aura:iteration items = "{!v.OrderList}" var="item">
-            <div style="height: 22px">  ${!item.totalAmount}: [{!item.quantity}]ㅤ{!item.productName} </div>
+            <div style="height: 22px">  <lightning:formattedNumber value="{!item.totalAmount}" style="currency" currencyCode="USD"/>: [{!item.quantity}]ㅤ{!item.productName} </div>
         </aura:iteration>
         <div style="height: 30px">
-            <p>Total cost for order: ${!v.orderPrice}</p>
+            <p>Total cost for order: <lightning:formattedNumber value="{!v.orderPrice}" style="currency" currencyCode="USD"/></p>
         </div>
     </aura:if>
     <aura:if isTrue="{!v.orderPrice}">
