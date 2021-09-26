@@ -4,22 +4,28 @@
     <input type="hidden" name="orgid" value="00D5f000003GHKT"/>
     <input type="hidden" name="retURL" value="http://"/>
 
-    <label for="name">Your Name </label><input  id="name" maxlength="80" name="name" size="20" type="text" />
-    <br/><br/><br/>
-    
-    <label for="email">Email </label><input  id="email" maxlength="80" name="email" size="20" type="text" />
-    <br/><br/><br/>
-    <label for="phone">Phone </label><input  id="phone" maxlength="40" name="phone" size="20" type="text" />
-    <br/><br/><br/>
-    <lightning:select name="subject" label="Select Subject ">
-        <option value="question">Question</option>
-        <option value="concern">Concern</option>
-        <option value="comment">Comment</option>
-    </lightning:select>
-    <br/><br/>
-    <label for="description">Description </label><textarea name="description"></textarea>
-    <br/><br/><br/>
-    <input type="submit" name="submit"/>
+    <div style="height: 40px">
+        <label for="name">Your Name </label><input  id="name" maxlength="80" name="name" size="20" type="text" />
+    </div>
+    <div style="height: 40px">
+        <label for="email">Email </label><input  id="email" maxlength="80" name="email" size="20" type="text" />
+    </div>
+    <div style="height: 40px">
+        <label for="phone">Phone </label><input  id="phone" maxlength="40" name="phone" size="20" type="text" />
+    </div>
+    <div style="height: 50px">
+        <lightning:select name="subject" label="Select Subject ">
+            <option value="question">Question</option>
+            <option value="concern">Concern</option>
+            <option value="comment">Comment</option>
+        </lightning:select>
+    </div>
+    <div style="height: 50px">
+        <label for="description">Description </label><textarea name="description"></textarea>
+    </div>
+    <div style="height: 30px">
+        <input type="submit" name="submit"/>
+    </div>
     
     </form>
 </aura:component>
