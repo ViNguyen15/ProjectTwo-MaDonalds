@@ -1,0 +1,42 @@
+<aura:component controller="ControllerPlaceOrder">
+
+    <aura:attribute name="orderID" type="ID"/>
+    <aura:attribute name="productNames" type="List"/>
+    <aura:attribute name="productPrice" type="Decimal"/>
+    <aura:attribute name="itemSelected" type="Boolean"/>
+    <aura:attribute name="orderPrice" type="Decimal"/>
+    <aura:attribute name="OrderList" type = "ControllerPlaceOrder.WrappedOrderItem[]"/>
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <div style="height: 60px">
+        <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" onchange="{!c.onProdSelect}" required="true">
+            <aura:iteration items="{!v.productNames}" var="prodName">
+                <option text="{!prodName}"></option>
+            </aura:iteration>
+        </lightning:select>
+    </div>
+    <div style="height: 60px">
+        <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" min = "0" required="true" onchange="{!c.onProdSelect}"/>
+    </div>
+    <div style="height: 30px">
+        Cost: <lightning:formattedNumber value="{!v.productPrice}" style="currency" currencyCode="USD"/>
+    </div>
+    <aura:if isTrue="{!v.itemSelected}">
+        <div style="height: 30px">
+            <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.orderPrice}">
+        <div style="height: 30px">Current Order:</div>
+        <aura:iteration items = "{!v.OrderList}" var="item">
+            <div style="height: 22px">  <lightning:formattedNumber value="{!item.totalAmount}" style="currency" currencyCode="USD"/>: [{!item.quantity}]ㅤ{!item.productName} </div>
+        </aura:iteration>
+        <div style="height: 30px">
+            <p>Total cost for order: <lightning:formattedNumber value="{!v.orderPrice}" style="currency" currencyCode="USD"/></p>
+        </div>
+    </aura:if>
+    <aura:if isTrue="{!v.orderPrice}">
+        <div style="height: 30px">
+            <lightning:button variant="brand" label="Submit Order" title="SubmitOrder" onclick="{!c.submitOrder1}"/>
+        </div>
+    </aura:if>
+</aura:component>
