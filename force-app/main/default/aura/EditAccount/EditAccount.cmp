@@ -1,0 +1,22 @@
+<aura:component controller = "CustomerAccountController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes,force:hasRecordId,lightning:isUrlAddressable" access = "global">
+    <aura:attribute name = "IDList" type = "id[]"/>  
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <aura:if isTrue = "{!v.IDList}">
+        <aura:set attribute = "else"><div class = "slds-box">There is no account associated with the current user. Please sign up for a customer account
+            if you'd like use our services, or contact our support team.</div> </aura:set>
+        
+           <lightning:recordEditForm aura:id = "toSubmit" recordId="{!v.IDList[1]}" objectApiName="Contact">
+        <div class="slds-box"> 
+            <div style = "text-align: center; font-size: 24px; font-style: bold;"><h1>Update Account Info</h1></div><br></br><br></br>
+            <lightning:inputField fieldName = "FirstName"/>
+            <lightning:inputField fieldName = "LastName"/>
+            <lightning:inputField fieldName = "MailingStreet"/>
+            <lightning:inputField fieldName = "MailingCity"/>
+            <lightning:inputField fieldName = "MailingState"/>
+            <lightning:inputField fieldName = "MailingPostalCode"/>
+            <lightning:inputField fieldName = "MailingCountry"/>
+            <lightning:inputField fieldName = "Phone"/>
+            <lightning:inputField fieldName = "Email"/>
+        </div>
+    </lightning:recordEditForm></aura:if>
+ </aura:component>

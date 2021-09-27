@@ -1,0 +1,37 @@
+.THIS 
+{
+   /* background-color: #c5d4e3;*/
+    background-color: white;
+    border-style: hidden;
+    border-radius: 5px;
+}
+
+.THIS *
+{
+   /* background-color: #c5d4e3;*/
+    background-color: white;
+}
+
+.THIS table, .THIS th, .THIS td
+{
+    border: 1px solid white;
+    border-collapse: collapse;
+}
+
+.THIS table
+{
+    width: 95%;
+    margin: 15px;
+    padding: 4px;
+}
+
+.THIS th, .THIS td
+{
+    width: 25%;
+    padding: 4px 4px 4px 8px;
+}
+
+.THIS button
+{
+    border: 1px solid black;
+}

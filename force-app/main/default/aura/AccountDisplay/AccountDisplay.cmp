@@ -1,0 +1,42 @@
+<aura:component controller = "CustomerAccountController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access = "global">
+     <aura:attribute name = "IDList" type = "id[]"/>
+    <aura:attribute name = "IsEdit" type = "Boolean"/>
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+    <aura:if isTrue = "{!v.IsEdit}">
+        <aura:set attribute = "else">
+    <div style = "background-color: white; border-style: hidden; border-radius: 5px;">
+    <aura:if isTrue = "{!v.IDList != null}">
+        <aura:set attribute = "else"><div>There is no account associated with the current user. Please sign up for a customer account
+            if you'd like use our services, or contact our support team.</div> </aura:set><br></br>
+                   <div style = "font-size: 24px; font-style: bold; text-align: center;"><h1>Account Info</h1></div><br></br><br></br>
+    <div style = "background-color: white; border: none; border-radius: 5px;">
+        <lightning:recordViewForm recordId="{!v.IDList[0]}" objectApiName="User" class = "slds-m-left_large">
+           <lightning:outputField fieldName="Username"/>
+           <lightning:outputField fieldName="Name"/>
+           <lightning:outputField fieldName="Email"/>
+        </lightning:recordViewForm>
+           <lightning:recordViewForm recordId="{!v.IDList[2]}" objectApiName="Account" class = "slds-m-left_large">
+           <lightning:outputField fieldName = "RewardPoints__c"/>
+        
+    </lightning:recordViewForm>
+           <lightning:recordViewForm recordId="{!v.IDList[1]}" objectApiName="Contact"  class = "slds-m-left_large" >
+            <lightning:outputField fieldName = "FirstName"/>
+            <lightning:outputField fieldName = "LastName"/>
+            <lightning:outputField fieldName = "MailingStreet"/>
+            <lightning:outputField fieldName = "MailingCity"/>
+            <lightning:outputField fieldName = "MailingState"/>
+            <lightning:outputField fieldName = "MailingPostalCode"/>
+            <lightning:outputField fieldName = "MailingCountry"/>
+            <lightning:outputField fieldName = "Phone"/>
+            <lightning:outputField fieldName = "Email"/>
+        
+            </lightning:recordViewForm></div></aura:if><br></br></div>
+            <aura:if isTrue = "{!v.IDList != null}">
+        <div class = "slds-align_absolute-center" style = "background-color: white;">
+    <lightning:button class="slds-m-left_x-small" label="Edit" onclick="{!c.EditMode}" ></lightning:button>    
+                <br></br>  <br></br> </div></aura:if></aura:set>
+    <c:EditAccount aura:id = "editForm"></c:EditAccount>
+        <div class = "slds-align_absolute-center"><lightning:button class="slds-m-top_small" onclick = "{!c.Submitted}" name="Update" label="Update"/></div>
+        <div style = "background-color: white;"><br></br></div>
+    </aura:if><div style = "background-color: white;"><br></br></div>
+ </aura:component>

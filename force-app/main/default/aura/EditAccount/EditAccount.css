@@ -1,0 +1,18 @@
+.THIS 
+{
+   /* background-color: #c5d4e3;*/
+    background-color: white;
+    border-style: hidden;
+    border-radius: 5px;
+}
+
+.THIS button 
+{
+    background-color: white;
+    border: 1px solid black;
+}
+
+.THIS .slds-box
+{
+    border: hidden;
+}

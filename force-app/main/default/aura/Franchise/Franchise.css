@@ -1,0 +1,23 @@
+.THIS .lab
+{
+    margin: 5px;
+    padding: 5px;
+}
+
+.THIS .menuBtn
+{
+    border-radius: 3px;
+    margin: 10px 0px 0px 12px;
+    padding: 3px;
+}
+
+.THIS .menuBtn:hover
+{
+    background-color: gray;
+}
+
+.THIS .comp
+{
+    border: hidden;
+    border-radius: 5px;
+}

@@ -1,0 +1,17 @@
+.THIS
+{
+    border: hidden;
+    border-radius: 5px;
+    background-color: #e3dac5;
+}
+
+.THIS .menuBtn
+{
+    border: hidden;
+    margin: 10px 0px 0px 12px !important;
+}
+
+.THIS .menuBtn:hover
+{
+    background-color: gray;
+}
