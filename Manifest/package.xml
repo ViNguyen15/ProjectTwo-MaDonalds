@@ -9,12 +9,24 @@
         <members>Product2.ProductCost__c</members>
         <name>CustomField</name>
     </types>
+     <types>
+        <members>*</members>
+        <name>CustomObject</name>
+    </types>
+    <types>
+        <members>*</members>
+        <name>GlobalValueSet</name>
+    </types>
     <types>
         <members>CustomerAccountController</members>
         <members>CustomerAccountControllerTest</members>
         <members>TestControllerPlaceOrder</members>
         <members>ControllerPlaceOrder</members>
         <name>ApexClass</name>
+    </types>
+     <types>
+        <members>*</members>
+        <name>Group</name>
     </types>
      <types>
         <members>EditAccount</members>
