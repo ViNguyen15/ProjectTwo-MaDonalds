@@ -1,0 +1,26 @@
+<aura:component controller = "CustomerAccountController" implements="force:appHostable,forceCommunity:availableForAllPageTypes,flexipage:availableForAllPageTypes" access = "global">
+	<aura:attribute name = "OrderList" type = "CustomerAccountController.WrappedOrders[]"/>
+        <aura:attribute name = "Offset" type = "Integer"/>
+    
+    <aura:handler name = "init" value = "{!this}" action = "{!c.doInit}"/>
+        <aura:if isTrue = "{!v.OrderList}">
+            <aura:set attribute = "else"><p style = "background-color: white;">You haven't placed any orders with us.</p></aura:set>
+        <div class= "slds-box noBord">
+           <div style = "font-size: 24px; font-style: bold; text-align: center;"><h1>Previous Orders</h1></div><br></br>
+	 <aura:iteration items= "{!v.OrderList}" var="item" start = "{!v.Offset}" end = "{!v.Offset + 5}"> <div class = "slds-box" style = "border: hidden; border-top: 1px solid gray; border-radius: 0px;"><table>
+         <tr><th>Order Number</th><th>Order Date</th><th>Order Total</th> </tr>
+         <tr><td>{!item.OrderNumber}</td>
+             <td>{!item.EffectiveDate}</td>
+             <td>{!item.TotalAmount}</td>
+         </tr>   </table>
+            <table> 
+        
+          <tr><th style = "width: 33%;">Product Name</th><th style = "width: 17%;">Quantity</th><th style = "width: 17%;">Price</th><th style = "width: 33%;">Total</th></tr>
+             <aura:iteration items = "{!item.Items}" var = "prods">
+                 <tr><td style = "width: 33%;">{!prods.ProductName}</td><td style = "width: 17%;">{!prods.Quantity}</td><td style = "width: 17%;">{!prods.UnitPrice}</td><td style = "width: 33%;">{!prods.TotalPrice}</td></tr>
+                </aura:iteration></table></div>
+            </aura:iteration><br></br>
+             <div class = "slds-align_absolute-center"><lightning:button label="Previous" title="Non-primary action" onclick="{!c.DecreaseOffset}" class="slds-m-left_x-small"></lightning:button>
+            <lightning:button label="Next" title="Non-primary action" onclick="{!c.IncreaseOffset}" class="slds-m-left_x-small"></lightning:button></div>
+           <br></br></div></aura:if>
+</aura:component>

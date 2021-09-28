@@ -7,6 +7,8 @@
     <aura:attribute name="orderPrice" type="Decimal"/>
     <aura:attribute name="OrderList" type = "ControllerPlaceOrder.WrappedOrderItem[]"/>
     <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <body style = "background-color: white; border: hidden; border-radius: 5px; height: 600px;">
+        <div style = "margin: 32px;"><br></br><h1 style = "font-size: 18px; text-align: center;">Place Order</h1>
     <div style="height: 60px">
         <lightning:select name="selectProduct" label="Select a Product:" aura:id="selectProductID" onchange="{!c.onProdSelect}" required="true">
             <aura:iteration items="{!v.productNames}" var="prodName">
@@ -16,14 +18,14 @@
     </div>
     <div style="height: 60px">
         <lightning:input label = "Quantity" aura:id="quantityID" type = "Number" value = "1" min = "0" required="true" onchange="{!c.onProdSelect}"/>
-    </div>
+    </div><br></br>
     <div style="height: 30px">
         Cost: <lightning:formattedNumber value="{!v.productPrice}" style="currency" currencyCode="USD"/>
-    </div>
+    </div><br></br>
     <aura:if isTrue="{!v.itemSelected}">
         <div style="height: 30px">
             <lightning:button variant="brand" label="Add Item to Order" title="AddItem" onclick="{!c.addItem1}"/>
-        </div>
+        </div><br></br>
     </aura:if>
     <aura:if isTrue="{!v.orderPrice}">
         <div style="height: 30px">Current Order:</div>
@@ -38,5 +40,5 @@
         <div style="height: 30px">
             <lightning:button variant="brand" label="Submit Order" title="SubmitOrder" onclick="{!c.submitOrder1}"/>
         </div>
-    </aura:if>
+            </aura:if><br></br></div></body>
 </aura:component>

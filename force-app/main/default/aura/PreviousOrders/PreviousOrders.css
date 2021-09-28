@@ -1,21 +1,13 @@
-.THIS 
+.THIS
 {
-   /* background-color: #c5d4e3;*/
-    background-color: white;
-    border-style: hidden;
-    border-radius: 5px;
-}
-
-.THIS *
-{
-   /* background-color: #c5d4e3;*/
     background-color: white;
 }
 
 .THIS table, .THIS th, .THIS td
 {
-    border: 1px solid white;
+    border: 2px solid white;
     border-collapse: collapse;
+    background-color: white;
 }
 
 .THIS table
@@ -29,6 +21,21 @@
 {
     width: 25%;
     padding: 4px 4px 4px 8px;
+    border-radius: 6px;
+}
+
+.THIS th
+{
+    background-color: #c21023;
+    color: white;
+}
+
+.THIS td
+{
+    background-color: #fcb010;
+    font-family: Montserrat;
+    font-style: bold;
+    color: black;
 }
 
 .THIS button
@@ -40,4 +47,9 @@
 {
     background-color: gray;
     border: 1px solid black;
+}
+
+.noBord.THIS 
+{
+    border: hidden;
 }

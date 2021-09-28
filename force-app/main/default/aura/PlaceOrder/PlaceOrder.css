@@ -8,8 +8,7 @@
 }
 
 .THIS button {
-    background-color: #fcb010;
-    border-radius: 8px;
-    color: #c21023;
-    border: 1px solid #c21023;
+    background-color: white;
+    border-radius: 5px;
+    border: 1px solid black;
 }

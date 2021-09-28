@@ -4,7 +4,7 @@
 <body style = "background-color: white;" class = "comp"><br></br><br></br>
     <h1 style = "font-size: 18px; text-align: center;">Franchise Opportunities</h1><br></br>
 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST"><div style = "margin: 0px 0px 0px 5%;">
-    <input type= "hidden" name="oid" value="00D5f000003H12V"></input>
+    <input type= "hidden" name="oid" value="00D5f000003H12V"></input><!-- Change this value to your org's-->
     <input type= "hidden" name="retURL" value="https://madonalland-developer-edition.na163.force.com/MaDonalLand" ></input>
   <span style = "width: 120px; display: inline-block;"><label for="first_name" class = "lab">First Name</label></span><span style = "margin: 0px 60px;"><input  id="first_name" maxlength="40" name="first_name" size="20" type="text" class = "lab" style = "width: 40%;" /></span><br></br>
     <span style = "width: 120px; display: inline-block;">   <label for="last_name" class = "lab">Last Name</label></span><span style = "margin: 0px 60px;"><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" class = "lab" style = "width: 40%;"/></span><br></br>

@@ -4,6 +4,8 @@
     <div><br></br><br></br><span><img src = "{!$Resource.MaDonalLogo}" style = "border: hidden; border-radius: 5px;"/></span><span style = "width: 75%; float: right; background-color: white; height: 46px; margin: 72px 0px 0px 0px; border: hidden; border-radius: 5px;">
         <lightning:button label = "Home" onclick = "{!c.doInit}" class = "menuBtn slds-m-left_x-small"></lightning:button>
         <lightning:button label = "My Account" onclick = "{!c.navAccount}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "Place Order" onclick = "{!c.navOrder}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "Support" onclick = "{!c.navSupport}" class = "menuBtn slds-m-left_x-small"></lightning:button>
         <lightning:button label = "Franchise" onclick = "{!c.navFranchise}" class = "menuBtn slds-m-left_x-small"></lightning:button>
          <lightning:button label = "Sign Out" onclick = "{!c.LogOut}" class = "menuBtn slds-m-left_x-small"></lightning:button>
         </span></div>
@@ -12,6 +14,16 @@
     <aura:if isTrue = "{!v.CurPage == 'Account'}">
     <div style = "width: 50%; margin 0px; padding: 0px; float: left;"><c:AccountDisplay aura:id = "AccDisp"></c:AccountDisplay></div>
 	<div style = "width: 48%; margin: 0px 0px 0px 2%; float: left;"><c:PreviousOrders aura:id = "PrevOrd"></c:PreviousOrders></div>
+    </aura:if>
+    <aura:if isTrue = "{!v.CurPage == 'Order'}">
+    <div style = "width: 50%; margin 0px; padding: 0px; float: left;"><c:PlaceOrder></c:PlaceOrder></div>
+	<div style = "width: 48%; margin: 0px 0px 0px 2%; float: left;"></div>
+    </aura:if>
+    <aura:if isTrue = "{!v.CurPage == 'Support'}">
+    <div style = "width: 50%; margin 0px; padding: 0px; float: left;"><div style = "background-color: white; height: 540px; border: hidden; border-radius: 5px;"><br></br><br></br><h1 style = "font-size: 18px; text-align: center;">How can we help?</h1>
+        <br></br><br></br><p style = "margin: 0px 0px 0px 5%;">Have any issues or concerns? Just want to say hello? <br></br><br></br> Get in touch using this form!</p>
+        </div></div>
+	<div style = "width: 48%; margin: 0px 0px 0px 2%; float: left;"><c:CustomerSupport></c:CustomerSupport></div>
     </aura:if>
     <aura:if isTrue = "{!v.CurPage == 'Franchise'}">
     <div style = "width: 50%;; margin 0px; padding: 0px; float: left;"><div style = "background-color: white; height: 420px; border: hidden; border-radius: 5px;"><br></br><br></br><h1 style = "font-size: 18px; text-align: center;">Franchise Info</h1>
@@ -29,7 +41,13 @@
         </div>
     </aura:if>
     <div><br></br></div>
-    <div style = "width: 100%; background-color: white; height: 46px; margin: 72px 0px 0px 0px; border: hidden; border-radius: 5px; float: left;"></div>
-    <div style = "background-color: #e3dac5; float: left; width: 100%;"><br></br><br></br></div>
+    <div style = "background-color: #e3dac5; float: left; width: 100%; margin: 72px 0px 0px 0px;"><span style = "width: 100%; background-color: white; height: 46px; margin: 12px; border: hidden; border-radius: 5px;" class = "slds-align_absolute-center">
+        <lightning:button label = "Home" onclick = "{!c.doInit}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "My Account" onclick = "{!c.navAccount}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "Place Order" onclick = "{!c.navOrder}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "Support" onclick = "{!c.navSupport}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        <lightning:button label = "Franchise" onclick = "{!c.navFranchise}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+         <lightning:button label = "Sign Out" onclick = "{!c.LogOut}" class = "menuBtn slds-m-left_x-small"></lightning:button>
+        </span><br></br><br></br></div>
     <div></div>
 </aura:component>

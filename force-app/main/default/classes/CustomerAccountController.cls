@@ -37,7 +37,7 @@ public class CustomerAccountController
             
                 List<Order> allCustOrders = [SELECT effectiveDate, totalAmount, orderNumber, 
                                         (SELECT id, orderId, Product2ID, Quantity, UnitPrice, TotalPrice FROM OrderItems) 
-                                        FROM Order WHERE AccountId = : uContact.AccountId ORDER BY LastModifiedDate desc LIMIT 50];
+                                        FROM Order WHERE AccountId = : uContact.AccountId AND Status = 'Activated' ORDER BY LastModifiedDate desc LIMIT 50];
                 List<id> prodIds = new List<id>();
                 for(Order o : allCustOrders)
                 {

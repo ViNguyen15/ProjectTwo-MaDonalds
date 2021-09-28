@@ -1,31 +1,21 @@
 <aura:component>
+    
+    <body style = "background-color: white;" class = "comp"><br></br><br></br>
+    <h1 style = "font-size: 18px; text-align: center;">Contact Us</h1><br></br><div style = "margin: 0px 0px 0px 24px;">
     <form action="https://webto.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
     
-    <input type="hidden" name="orgid" value="00D5f000003GHKT"/>
-    <input type="hidden" name="retURL" value="http://"/>
-
-    <div style="height: 40px">
-        <label for="name">Your Name </label><input  id="name" maxlength="80" name="name" size="20" type="text" />
-    </div>
-    <div style="height: 40px">
-        <label for="email">Email </label><input  id="email" maxlength="80" name="email" size="20" type="text" />
-    </div>
-    <div style="height: 40px">
-        <label for="phone">Phone </label><input  id="phone" maxlength="40" name="phone" size="20" type="text" />
-    </div>
-    <div style="height: 50px">
-        <lightning:select name="subject" label="Select Subject ">
+    <input type="hidden" name="orgid" value="00D5f000003H12V"/> <!--Change this value to your org's-->
+        <input type= "hidden" name="retURL" value="https://madonalland-developer-edition.na163.force.com/MaDonalLand" ></input>
+       <br></br> <span style = "width: 120px; display: inline-block;"> <label for="name" class = "lab">Your Name </label></span><span style = "margin: 0px 60px;"><input  id="name" maxlength="80" name="name" size="20" type="text" class = "lab" style = "width: 40%;" /></span>
+        <br></br><span style = "width: 120px; display: inline-block;"> <label for="email" class = "lab">Email </label></span><span style = "margin: 0px 60px;"><input  id="email" maxlength="80" name="email" size="20" type="text"  class = "lab" style = "width: 40%;"/></span>
+        <br></br><span style = "width: 120px; display: inline-block;"><label for="phone" class = "lab">Phone </label></span><span style = "margin: 0px 60px;"><input  id="phone" maxlength="40" name="phone" size="20" type="text" class = "lab" style = "width: 40%;" /></span><br></br>
+        <br></br> <span style = "width: 120px; display: inline-block;"> <label for="description" class = "lab" style = "offset-position: top;">Description </label></span><span style = "margin: 0px 60px; padding: 30px 0px 0px 0px;"><textarea name="description" class = "lab" style = "width: 40%; padding: 30px 0px 0px 0px"></textarea></span>
+        <br></br><div style = "margin: 20px 0px 0px 220px;"><span style = "width: 120px; display: inline-block;"></span><span style = "margin: 0px 60px;"><lightning:select name="subject" label="Select Subject " class = "lab dropdown">
             <option value="question">Question</option>
             <option value="concern">Concern</option>
             <option value="comment">Comment</option>
-        </lightning:select>
-    </div>
-    <div style="height: 50px">
-        <label for="description">Description </label><textarea name="description"></textarea>
-    </div>
-    <div style="height: 30px">
-        <input type="submit" name="submit"/>
-    </div>
-    
-    </form>
+        </lightning:select></span></div><br></br>
+       
+      <br></br> <br></br> <div class = "slds-align_absolute-center" style = "margin: 20px;"><br></br><input type="submit" name="submit" class = "slds-m-left_x-small menuBtn" style = "border: 1px solid black; padding: 5px;"/></div>
+        </form><br></br><br></br></div></body>
 </aura:component>

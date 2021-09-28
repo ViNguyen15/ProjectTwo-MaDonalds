@@ -17,5 +17,15 @@
     navFranchise : function (component, event, helper)
     {
         helper.NavFran(component, event);
+    },
+    
+    navOrder : function (component, event, helper)
+    {
+        helper.NavOrd(component, event);
+    },
+    
+    navSupport : function (component, event, helper)
+    {
+        helper.NavSup(component, event);
     }
 })

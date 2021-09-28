@@ -12,6 +12,12 @@
     border: 1px solid black;
 }
 
+.THIS button:hover
+{
+    background-color: gray;
+    border: 1px solid black;
+}
+
 .THIS .slds-box
 {
     border: hidden;

@@ -73,7 +73,7 @@ public class ControllerPlaceOrder {
         //ContactID for current user is null when using preview through dev console, should ALWAYS be not null when using experience site
         if (users.get(0).contactID == null){
             System.debug('You should not see this on the experience site, only during previews in dev console');
-            return '0015f000005jh63AAA';
+           return '0015f000005VTT7AAO';
         }
         List<Contact> contacts = [SELECT id, accountID FROM contact WHERE id =: users.get(0).contactID];
         return contacts.get(0).accountID;
